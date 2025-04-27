@@ -1,0 +1,18 @@
+# docker-compose.yml
+version: '3.8'
+
+services:
+  web:
+    build: .
+    ports:
+      - "7000:7000"
+    environment:
+      - MONGO_URI=mongodb://root:example@mongo:27017/beaver_h1?authSource=admin
+    depends_on:
+      - mongo
+    restart: unless-stopped
+
+
+
+volumes:
+  mongodb_data:
